@@ -56,14 +56,8 @@ class Button extends React.Component {
                             cy={cy}
                             r={10}
                             fill="white"
-                            ref={el => {
-                                if (el == null) {
-                                    return;
-                                }
-
-                                el.addEventListener('animationend', () => {
-                                    this.removeClickEvent(clickEvent);
-                                });
+                            onAnimationEnd={() => {
+                                this.removeClickEvent(clickEvent);
                             }}
                         />
                     );
