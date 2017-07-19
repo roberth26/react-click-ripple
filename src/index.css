@@ -1,0 +1,21 @@
+#root {
+  display: flex;
+  padding: 100px 0;
+  justify-content: center;
+}
+
+circle {
+  animation: grow .5s;
+  transform-origin: 50% 50% 0;
+}
+
+@keyframes grow {
+  0% {
+    opacity: .8;
+    transform: scale3d( 1, 1, 1 );
+  }
+  100% {
+    opacity: 0;
+    transform: scale3d( 10, 10, 1 );
+  }
+}
