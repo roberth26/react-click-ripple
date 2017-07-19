@@ -45,7 +45,7 @@ class Button extends React.Component {
                 }}
                 viewBox={`0 0 ${this.element.offsetWidth} ${this.element.offsetHeight}`}
             >
-                {clickEvents.map((clickEvent, index) => {
+                {clickEvents.map(clickEvent => {
                     const cx = clickEvent.pageX - this.element.offsetLeft;
                     const cy = clickEvent.pageY - this.element.offsetTop;
                     
