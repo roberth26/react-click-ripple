@@ -4,9 +4,17 @@
   justify-content: center;
 }
 
+/* button styles */
+a {
+  background: red;
+  position: relative;
+  padding: 50px 100px;
+}
+
 circle {
   animation: grow .5s;
   transform-origin: 50% 50% 0;
+  fill: white;
 }
 
 @keyframes grow {

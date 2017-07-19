@@ -9,16 +9,13 @@ class Button extends React.Component {
         clickEvents: []
     };
 
+    setElement = el => this.element = el;
+
     handleClick = event => {
-        if (this.element == null) {
-            this.forceUpdate();
-        }
         this.setState({
             clickEvents: [...this.state.clickEvents, event.nativeEvent]
         });
     }
-
-    setElement = el => this.element = el;
 
     removeClickEvent = clickEvent => {
         this.setState({
@@ -33,6 +30,9 @@ class Button extends React.Component {
             return null;
         }
 
+        const offsetLeft = this.element.offsetLeft;
+        const offsetTop = this.element.offsetTop;
+
         return (
             <svg
                 style={{
@@ -46,8 +46,8 @@ class Button extends React.Component {
                 viewBox={`0 0 ${this.element.offsetWidth} ${this.element.offsetHeight}`}
             >
                 {clickEvents.map(clickEvent => {
-                    const cx = clickEvent.pageX - this.element.offsetLeft;
-                    const cy = clickEvent.pageY - this.element.offsetTop;
+                    const cx = clickEvent.pageX - offsetLeft;
+                    const cy = clickEvent.pageY - offsetTop;
                     
                     return (
                         <circle
@@ -55,7 +55,6 @@ class Button extends React.Component {
                             cx={cx}
                             cy={cy}
                             r={10}
-                            fill="white"
                             onAnimationEnd={() => {
                                 this.removeClickEvent(clickEvent);
                             }}
@@ -70,11 +69,6 @@ class Button extends React.Component {
         return (
             <a
                 ref={this.setElement}
-                style={{
-                    background: 'red',
-                    position: 'relative',
-                    padding: '50px 100px'
-                }}
                 onClick={this.handleClick}    
             >
                 SOME TEXT
@@ -83,8 +77,6 @@ class Button extends React.Component {
         )
     }
 }
-
-
 
 ReactDOM.render(
     <Button />,
